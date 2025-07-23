@@ -1,9 +1,10 @@
 import BaseController from "../../shared/base/BaseController.js";
 import fs from "fs/promises";
 class WebinarController extends BaseController {
-  constructor(service, cloudService) {
+  constructor(service, cloudService, query) {
     super(service);
     this.cloudService = cloudService;
+    this.query = query;
   }
 
   createWebinar = async (req, res, next) => {
@@ -44,6 +45,24 @@ class WebinarController extends BaseController {
       res
         .status(200)
         .json({ success: true, message: "success", data: webinar });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  getAllWebinars = async (req, res, next) => {
+    try {
+      console.log("req.query:", req.query);
+      const { skip = 0, limit = 10 } = Object.fromEntries(
+        Object.entries(req.query)
+      );
+
+      const webinars = await this.query.getAll({
+        skip: parseInt(skip),
+        limit: parseInt(limit),
+      });
+
+      return res.status(200).json({ success: true, data: webinars });
     } catch (error) {
       next(error);
     }

@@ -5,6 +5,7 @@ import CreateWebinarCommand from "../../applications/commands/CreateWebinarComma
 import WebinarController from "../controllers/WebinarController.js";
 import CloudinaryService from "../../infrastructure/services/CloudinaryService.js";
 import { upload } from "../middlewares/upload.js";
+import WebinarQuery from "../../applications/queries/WebinarQuery.js";
 
 const routerWebinar = express.Router();
 
@@ -17,7 +18,8 @@ export function initWebinarRoutes(io) {
     notification,
   });
   const cloudinary = new CloudinaryService();
-  const controller = new WebinarController(service, cloudinary);
+  const query = new WebinarQuery(repository);
+  const controller = new WebinarController(service, cloudinary, query);
 
   routerWebinar.post(
     "/webinar",
@@ -25,5 +27,6 @@ export function initWebinarRoutes(io) {
     controller.createWebinar
   );
   routerWebinar.post("/webinar/:id", controller.registerAttendee);
+  routerWebinar.get('/webinars', controller.getAllWebinars)
   return routerWebinar;
 }

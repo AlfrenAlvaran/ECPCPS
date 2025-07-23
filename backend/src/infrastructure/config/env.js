@@ -18,4 +18,6 @@ export const env = {
       secret: process.env.CLOUDINARY_API_SECRET,
     },
   ],
+
+  jwt: process.env.JWT_SECRET
 };
