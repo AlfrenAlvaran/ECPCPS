@@ -1,4 +1,3 @@
-// shared/errors/HttpError.js
 class HttpError extends Error {
   constructor({
     message = "HTTP Error",
