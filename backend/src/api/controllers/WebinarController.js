@@ -1,17 +1,41 @@
 import BaseController from "../../shared/base/BaseController.js";
-
+import fs from "fs/promises";
 class WebinarController extends BaseController {
-  constructor(service) {
+  constructor(service, cloudService) {
     super(service);
+    this.cloudService = cloudService;
   }
 
   createWebinar = async (req, res, next) => {
     try {
-      const result = await this.service.execute(req.body);
-      res.status(201).json(result);
+      const filePath = req.file?.path;
+      console.log("🖼️ Uploaded image path:", filePath);
+      console.log("📦 Request body:", req.body);
+
+      if (!filePath)
+        return res.status(400).json({ message: "Image is required" });
+
+      const uploaded = await this.cloudService.upload(filePath);
+
+      const webinarData = {
+        ...req.body,
+        img: uploaded.url,
+        publicId: uploaded.publicId,
+      };
+
+      await fs.unlink(filePath);
+
+      const createdWebinar = await this.service.execute(webinarData);
+
+      res.status(201).json({ success: true, data: createdWebinar });
     } catch (error) {
       next(error);
     }
+  };
+
+  registerAttendee = async (req, res) => {
+    const { name, email } = req.body;
+    const { _id } = req.params;
   };
 }
 export default WebinarController;

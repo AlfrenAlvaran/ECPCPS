@@ -6,6 +6,7 @@ const schema = new mongoose.Schema(
     timeNDate: { type: String, required: true },
     link: { type: String, required: true },
     img: { type: String, required: true },
+    publicId: { type: String, required: true },
     attendees: [
       {
         name: String,

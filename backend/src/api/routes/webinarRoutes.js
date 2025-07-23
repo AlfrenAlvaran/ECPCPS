@@ -3,6 +3,8 @@ import WebinarRepository from "../../infrastructure/repositories/WebinarReposito
 import NotificationService from "../../infrastructure/services/NotificationService.js";
 import CreateWebinarCommand from "../../applications/commands/CreateWebinarCommand.js";
 import WebinarController from "../controllers/WebinarController.js";
+import CloudinaryService from "../../infrastructure/services/CloudinaryService.js";
+import { upload } from "../middlewares/upload.js";
 
 const routerWebinar = express.Router();
 
@@ -14,9 +16,10 @@ export function initWebinarRoutes(io) {
     io,
     notification,
   });
-  const controller = new WebinarController(service);
+  const cloudinary = new CloudinaryService()
+  const controller = new WebinarController(service, cloudinary);
 
-  routerWebinar.post("/webinar", controller.createWebinar);
+  routerWebinar.post("/webinar", upload.single('image'), controller.createWebinar);
 
   return routerWebinar;
 }

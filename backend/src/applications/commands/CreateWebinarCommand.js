@@ -8,10 +8,10 @@ export default class CreateWebinarCommand extends BaseCommand {
   async execute(data) {
     const webinar = {
       ...data,
-      createAt: new Date(),
+      // createAt: new Date(),
     };
-
     const save = await this.repository.create(webinar);
+    console.log("Saved webinar:", save);
     this.notification?.notifyNewWebinar(save);
     return save;
   }
