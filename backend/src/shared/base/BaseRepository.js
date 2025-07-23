@@ -19,7 +19,7 @@ class BaseRepository {
   }
 
   async findById(id) {
-    return await this.model.findById(id).lean()
+    return await this.model.findById(id)
   }
 }
 export default BaseRepository;

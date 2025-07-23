@@ -16,10 +16,14 @@ export function initWebinarRoutes(io) {
     io,
     notification,
   });
-  const cloudinary = new CloudinaryService()
+  const cloudinary = new CloudinaryService();
   const controller = new WebinarController(service, cloudinary);
 
-  routerWebinar.post("/webinar", upload.single('image'), controller.createWebinar);
-
+  routerWebinar.post(
+    "/webinar",
+    upload.single("image"),
+    controller.createWebinar
+  );
+  routerWebinar.post("/webinar/:id", controller.registerAttendee);
   return routerWebinar;
 }

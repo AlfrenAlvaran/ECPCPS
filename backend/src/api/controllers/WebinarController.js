@@ -9,8 +9,6 @@ class WebinarController extends BaseController {
   createWebinar = async (req, res, next) => {
     try {
       const filePath = req.file?.path;
-      console.log("🖼️ Uploaded image path:", filePath);
-      console.log("📦 Request body:", req.body);
 
       if (!filePath)
         return res.status(400).json({ message: "Image is required" });
@@ -33,9 +31,25 @@ class WebinarController extends BaseController {
     }
   };
 
-  registerAttendee = async (req, res) => {
+  registerAttendee = async (req, res, next) => {
     const { name, email } = req.body;
-    const { _id } = req.params;
+    const { id } = req.params;
+
+    try {
+      const webinar = await this.service.registerAttendees(id, {
+        name,
+        email,
+      });
+
+      res
+        .status(200)
+        .json({ success: true, message: "success", data: webinar });
+    } catch (error) {
+      next(error);
+      console.log("====================================");
+      console.log("Error: ", error);
+      console.log("====================================");
+    }
   };
 }
 export default WebinarController;
