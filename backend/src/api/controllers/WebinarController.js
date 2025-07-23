@@ -46,9 +46,6 @@ class WebinarController extends BaseController {
         .json({ success: true, message: "success", data: webinar });
     } catch (error) {
       next(error);
-      console.log("====================================");
-      console.log("Error: ", error);
-      console.log("====================================");
     }
   };
 }
