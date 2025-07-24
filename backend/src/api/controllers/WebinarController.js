@@ -67,5 +67,16 @@ class WebinarController extends BaseController {
       next(error);
     }
   };
+
+  getWebinar = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const webinar = await this.query.getById(id);
+
+      return res.status(200).json({ success: true, data: webinar });
+    } catch (error) {
+      next(error)
+    }
+  };
 }
 export default WebinarController;

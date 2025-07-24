@@ -27,6 +27,7 @@ export function initWebinarRoutes(io) {
     controller.createWebinar
   );
   routerWebinar.post("/webinar/:id", controller.registerAttendee);
-  routerWebinar.get('/webinars', controller.getAllWebinars)
+  routerWebinar.get("/webinars", controller.getAllWebinars);
+  routerWebinar.get("/webinar/:id", controller.getWebinar);
   return routerWebinar;
 }

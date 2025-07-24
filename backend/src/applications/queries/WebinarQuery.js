@@ -8,6 +8,10 @@ class WebinarQuery extends BaseQuery {
   async getAll({ skip, limit }) {
     return await this.repository.findAll({ skip, limit });
   }
+
+  async getById(id) {
+    return this.repository.findById(id);
+  }
 }
 
 export default WebinarQuery;
