@@ -1,8 +1,9 @@
 import AuthForm from "@/components/forms/AuthForm";
 import AuthProvider from "@/context/AuthProvider";
-import React from "react";
+import React, { useEffect } from "react";
 
 const SignIn = () => {
+  
   return (
     <section className="flex-center size-full max-sm:px-6">
       <AuthProvider>

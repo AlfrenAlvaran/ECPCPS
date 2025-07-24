@@ -2,14 +2,10 @@ import { z } from "zod";
 
 export const AuthFormSchema = (type) => {
   return z.object({
-    name:
-      type === "sign-in"
-        ? z.string().min(1, "name is required")
-        : z.string().optional(),
-    password:
-      type === "sign-in"
-        ? z.string().min(1, "name is required")
-        : z.string().optional(),
-    email: z.string().min(1, "Email is required")
+    email: z.string().min(1, "Email is required").email("Invalid email address"),
+    password: z.string().min(1, "Password is required"),
+    ...(type === "sign-up" && {
+      name: z.string().min(1, "Name is required"),
+    }),
   });
 };

@@ -37,14 +37,13 @@ class AuthCommand extends BaseCommand {
       expiresIn: "15d",
     });
 
-
     return {
       token,
       user: {
         id: user.id,
-        email: user.email
-      }
-    }
+        email: user.email,
+      },
+    };
   }
 }
 

@@ -24,6 +24,8 @@
     "react-hook-form": "^7.61.0",
     "react-router-dom": "^7.7.0",
     "socket.io-client": "^4.8.1",
+    "sonner": "^2.0.6",
+    "sooner": "^1.1.4",
     "soz": "^0.0.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",

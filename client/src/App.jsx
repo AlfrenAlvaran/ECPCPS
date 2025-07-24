@@ -1,4 +1,4 @@
-import React from "react";
+import { Toaster } from "sonner";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Registration from "./pages/Registration";
 import SignIn from "./pages/SignIn";
@@ -13,6 +13,8 @@ const App = () => {
           <Route path="/sign-in" element={<SignIn />} />
         </Route>
       </Routes>
+      
+      <Toaster />
     </>
   );
 };
