@@ -22,12 +22,12 @@ export function initWebinarRoutes(io) {
   const controller = new WebinarController(service, cloudinary, query);
 
   routerWebinar.post(
-    "/webinar",
+    "/create",
     upload.single("image"),
     controller.createWebinar
   );
-  routerWebinar.post("/webinar/:id", controller.registerAttendee);
   routerWebinar.get("/webinars", controller.getAllWebinars);
+  routerWebinar.post("/webinar/:id", controller.registerAttendee);
   routerWebinar.get("/webinar/:id", controller.getWebinar);
   return routerWebinar;
 }
