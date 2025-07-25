@@ -1,10 +1,11 @@
-import { server } from "@/constants/server"
-import api from "@/services/api"
+import { server } from "@/constants/server";
+import api from "@/services/api";
 
-const create_api = async (data) => {
-    try {
-        const response = await api.post(`${server}/webinar/`)
-    } catch (error) {
-        
-    }
-}
+export const create_api = async (data) => {
+  try {
+    const response = await api.post(`${server}/webinar/`, data);
+    return response.data
+  } catch (error) {
+    console.error("Internal Server Error", error?.message);
+  }
+};
