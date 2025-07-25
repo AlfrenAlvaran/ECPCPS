@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form } from "@/components/ui/form";
 import CustomInput from "@/components/inputs/CustomInput";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -20,7 +20,8 @@ const AuthForm = ({ type }) => {
       password: "",
     },
   });
-  // const { handleSubmit, formState } = form;
+
+  const navigate = useNavigate();
 
   const onProcess = async (data) => {
     console.log("Form submitted", data);
@@ -34,6 +35,8 @@ const AuthForm = ({ type }) => {
 
         if (!ok) {
           toast.error("Server Error");
+        } else {
+          navigate("/dashboard");
         }
       }
     } catch (error) {

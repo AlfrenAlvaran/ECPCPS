@@ -5,9 +5,16 @@ class SocketService {
 
   connect() {
     if (!this.socket) {
-      if (!this.socket.connected) {
-        this.socket.connect();
-      }
+      this.socket = io(
+        import.meta.env.VITE_BACKEND_URL || "http://localhost:9000",
+        {
+          autoConnect: false,
+          transports: ["websocket"],
+        }
+      );
+    }
+    if (!this.socket.connected) {
+      this.socket.connect();
     }
   }
 
@@ -30,5 +37,4 @@ class SocketService {
   }
 }
 
-
-export const socketService = new SocketService()
+export const socketService = new SocketService();
