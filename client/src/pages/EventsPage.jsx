@@ -1,11 +1,12 @@
-import React from 'react'
+import TopHeader from "@/components/tables/TopHeader";
+import React from "react";
 
 const EventsPage = () => {
   return (
-    <div>
-      
+    <div className="flex flex-col w-full gap-10">
+      <TopHeader />
     </div>
-  )
-}
+  );
+};
 
-export default EventsPage
+export default EventsPage;
