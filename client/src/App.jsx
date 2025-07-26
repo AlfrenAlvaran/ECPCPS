@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn";
 import AuthLayout from "./layouts/AuthLayout";
 import MainLayout from "./layouts/MainLayout";
 import Dashboard from "./pages/Dashboard";
+import EventsPage from "./pages/EventsPage";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
 
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/events" element={<EventsPage />} />
         </Route>
       </Routes>
 

@@ -75,7 +75,43 @@ class WebinarController extends BaseController {
 
       return res.status(200).json({ success: true, data: webinar });
     } catch (error) {
-      next(error)
+      next(error);
+    }
+  };
+
+  count_webinars = async (req, res, next) => {
+    try {
+      const total = await this.query.countAll();
+      return res.status(200).json({ success: true, data: total });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  countByMonth = async (req, res, next) => {
+    try {
+      const data = await this.query.countByMonth();
+      return res.status(200).json({ success: true, data: data });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  getGroupChart = async (req, res, next) => {
+    try {
+      const total = await this.query.countGroupedByMonth();
+      return res.status(200).json({ success: true, data: total });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  donutChart = async (req, res, next) => {
+    try {
+      const total = await this.query.getDonutData();
+      return res.status(200).json({ success: true, data: total });
+    } catch (error) {
+      next(error);
     }
   };
 }

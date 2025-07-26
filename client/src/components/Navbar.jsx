@@ -8,7 +8,7 @@ const Navbar = ({ active }) => {
         className="block lg:hidden text-black"
         onClick={() => setOpen(active)}
       >
-        {menuOpen ? (
+        {!menuOpen ? (
           <HiOutlineMenu className="text-2xl" />
         ) : (
           <HiOutlineX className="text-2xl" />

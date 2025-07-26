@@ -26,8 +26,13 @@ export function initWebinarRoutes(io) {
     upload.single("image"),
     controller.createWebinar
   );
-  routerWebinar.get("/webinars", controller.getAllWebinars);
   routerWebinar.post("/webinar/:id", controller.registerAttendee);
+
+  routerWebinar.get("/webinars", controller.getAllWebinars);
   routerWebinar.get("/webinar/:id", controller.getWebinar);
+  routerWebinar.get("/counts", controller.count_webinars);
+  routerWebinar.get("/chart-data", controller.countByMonth);
+  routerWebinar.get("/group-chart", controller.getGroupChart);
+  routerWebinar.get("/donut-chart", controller.donutChart);
   return routerWebinar;
 }
