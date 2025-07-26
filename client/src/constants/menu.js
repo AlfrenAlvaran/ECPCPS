@@ -1,5 +1,7 @@
 import { LuLayoutDashboard } from "react-icons/lu";
-import { MdEventNote } from "react-icons/md";
+import { MdEventNote, MdOutlineReport } from "react-icons/md";
+
+
 export const menu = [
   {
     id: "1",
@@ -13,4 +15,10 @@ export const menu = [
     icon: MdEventNote,
     path: "/events",
   },
+  { 
+    id: "3",
+    name: "Reports",
+    icon: MdOutlineReport,
+    path: "/reports",
+  }
 ];

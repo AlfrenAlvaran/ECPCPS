@@ -6,6 +6,7 @@ import AuthLayout from "./layouts/AuthLayout";
 import MainLayout from "./layouts/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import EventsPage from "./pages/EventsPage";
+import ReportPage from "./pages/ReportPage";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route element={<MainLayout />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/events" element={<EventsPage />} />
+          <Route path="/reports" element={<ReportPage />} />
         </Route>
       </Routes>
 

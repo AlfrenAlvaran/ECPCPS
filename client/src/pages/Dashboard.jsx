@@ -11,7 +11,7 @@ const Dashboard = () => {
   return (
     <div className="mx-auto space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <InfoCards label="Events" icon={menu[1].icon} value={countWebinar} />
+        <InfoCards label="Webinars" icon={menu[1].icon} value={countWebinar} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
