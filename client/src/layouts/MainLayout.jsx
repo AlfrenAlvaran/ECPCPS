@@ -1,18 +1,30 @@
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
-import React from "react";
 import { Outlet } from "react-router-dom";
 
-const MainLayout = ({ active }) => {
+const MainLayout = () => {
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <>
-      <Navbar active={active} />
-
-      <div className="flex">
-        <div className="max-[1080px]:hidden">
-          <Sidebar active={active} />
+      <Navbar toggleSidebar={() => setSidebarOpen((prev) => !prev)} />
+      <div className="flex relative">
+      
+        <div className="max-lg:hidden">
+          <Sidebar />
         </div>
-        <div className="grow mx-5">
+
+       
+        {isSidebarOpen && (
+          <div className="lg:hidden fixed inset-0 z-40 bg-black opacity-50">
+            <div className="w-64 h-full bg-white shadow-lg z-50">
+              <Sidebar closeSidebar={() => setSidebarOpen(false)} />
+            </div>
+          </div>
+        )}
+
+        <div className="flex-1 min-h-screen">
           <Outlet />
         </div>
       </div>

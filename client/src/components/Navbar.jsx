@@ -3,8 +3,7 @@ import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
 import { useLocation } from "react-router-dom";
 import TopHeader from "./tables/TopHeader";
 
-const Navbar = ({ active }) => {
-  const [menuOpen, setOpen] = useState(false);
+const Navbar = ({ toggleSidebar }) => {
   const { pathname } = useLocation();
 
   return (
@@ -12,13 +11,9 @@ const Navbar = ({ active }) => {
       <div className="flex items-center gap-5">
         <button
           className="block lg:hidden text-black"
-          onClick={() => setOpen(!menuOpen)}
+          onClick={toggleSidebar}
         >
-          {!menuOpen ? (
-            <HiOutlineMenu className="text-2xl" />
-          ) : (
-            <HiOutlineX className="text-2xl" />
-          )}
+          <HiOutlineMenu className="text-2xl" />
         </button>
 
         <div className="flex gap-2 items-center">
@@ -44,5 +39,6 @@ const Navbar = ({ active }) => {
     </div>
   );
 };
+
 
 export default Navbar;
