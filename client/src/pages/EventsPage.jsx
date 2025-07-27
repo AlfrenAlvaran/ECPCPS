@@ -4,7 +4,8 @@ import React from "react";
 const EventsPage = () => {
   return (
     <div className="flex flex-col w-full gap-10">
-      <TopHeader />
+      
+
     </div>
   );
 };

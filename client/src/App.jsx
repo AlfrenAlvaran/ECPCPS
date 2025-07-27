@@ -1,6 +1,6 @@
 import { Toaster } from "sonner";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Registration from "./pages/Registration";
+
 import SignIn from "./pages/SignIn";
 import AuthLayout from "./layouts/AuthLayout";
 import MainLayout from "./layouts/MainLayout";
